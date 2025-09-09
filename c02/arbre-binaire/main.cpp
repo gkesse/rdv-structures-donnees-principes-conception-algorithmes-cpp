@@ -117,13 +117,10 @@ private:
 // de la manière suivante
 int main(int argc, char **argv)
 {
-
-    // on peut construire un arbre binaire
-    // de la manière suivante
+    // construction par nom d'un arbre binaire
     org_tree tree("CEO");
 
-    // on peut alimenter un arbre binaire
-    // de la manière suivante
+    // ajout des données à un arbre binaire
     if (tree.addSubordinate("CEO", "Deputy Director"))
         std::cout << "(03): Added Deputy Director in the tree." << std::endl;
     else
@@ -173,8 +170,7 @@ int main(int argc, char **argv)
     // (02): Deputy Director already has 2 subordinates.
     // (18): Couldn't add Finance Head in the tree
 
-    // on peut afficher un arbre binaire
-    // de la manière suivante
+    // affichage d'un arbre binaire
     std::cout << "(19): " << tree << std::endl;
     // (19): {CEO,
     // Deputy Director,
