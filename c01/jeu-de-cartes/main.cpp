@@ -6,12 +6,13 @@
 #include <random>
 #include <chrono>
 
-// on peut modéliser une carte (card)
-// d'un jeu de cartes (game) de la manière suivante
+// on peut modéliser une carte d'un jeu de cartes
+// par son numéro (number) et sa couleur (suit)
+// de la manière suivante
 struct card
 {
-    // on peut énumérer les couleurs d'une carte (card)
-    // de la manière suivante
+    // on peut énumérer les couleurs d'une carte
+    // d'un jeu de cartes de la manière suivante
     enum suit
     {
         HEART,  // coeur
@@ -20,8 +21,8 @@ struct card
         DIAMOND // carreau
     };
 
-    // on peut convertir une carte (card) en chaîne de caractères
-    // de la manière suivante
+    // on peut afficher les informations sur une carte
+    // d'un jeu de cartes de la manière suivante
     std::string to_string() const
     {
         std::ostringstream os;
@@ -68,19 +69,18 @@ struct card
         return os.str();
     }
 
-    // on peut modéliser une carte (card)
-    // par son numéro (number) et sa couleur (suit)
-    // de la manière suivante
     int number;
     suit suit;
 };
 
-// on peut modéliser un jeu de cartes (game)
+// on peut modéliser un jeu de cartes
+// par des cartes (deck) et des joueurs (player1, player2, player3, player4)
 // de la manière suivante
-struct game
+class game
 {
-    // on peut construire les cartes (desk)
-    // d'un jeu de cartes (game) de la manière suivante
+public:
+    // on peut construire les cartes
+    // d'un jeu de cartes de la manière suivante
     void buildDeck()
     {
         for (int i = 0; i < 13; i++)
@@ -93,27 +93,24 @@ struct game
             deck[i + 3 * 13] = card{i + 1, card::DIAMOND};
     }
 
-    // on peut distribuer les cartes (desk) aux joueurs
-    // (player1, player2, player3, player4)
-    // d'un jeu de cartes (game) de la manière suivante
+    // on peut distribuer les cartes aux joueurs
+    // d'un jeu de cartes de la manière suivante
     void dealCards()
     {
-        // on peut mélanger les cartes (desk)
-        // d'un jeu de cartes (game) de la manière suivante
+        // mélange des cartes
         unsigned seed = (unsigned)std::chrono::system_clock::now()
                             .time_since_epoch()
                             .count();
         std::shuffle(deck.begin(), deck.end(), std::default_random_engine(seed));
 
-        // on peut distribuer les cartes (desk)
-        // d'un jeu de cartes (game) de la manière suivante
+        // distribution des cartes
         player1 = {deck.begin() + 0 * 13, deck.begin() + 1 * 13};
         player2 = {deck.begin() + 1 * 13, deck.begin() + 2 * 13};
         player3 = {deck.begin() + 2 * 13, deck.begin() + 3 * 13};
         player4 = {deck.begin() + 3 * 13, deck.end()};
     }
 
-    // on peut démarrer un jeu de cartes (game)
+    // on peut démarrer un jeu de cartes
     // de la manière suivante
     void playGame()
     {
@@ -124,7 +121,7 @@ struct game
     }
 
     // on peut déterminer le vainqueur
-    // d'un jeu de cartes (game) de la manière suivante
+    // d'un jeu de cartes de la manière suivante
     int getWinner() const
     {
         if (player1.empty())
@@ -138,8 +135,9 @@ struct game
         return 0;
     }
 
+private:
     // on peut déterminer la fin de la partie
-    // d'un jeu de cartes (game) de la manière suivante
+    // d'un jeu de cartes de la manière suivante
     bool isGameComplete() const
     {
         return player1.empty() || player2.empty() ||
@@ -147,11 +145,10 @@ struct game
     }
 
     // on peut jouer une partie
-    // d'un jeu de cartes (game) de la manière suivante
+    // d'un jeu de cartes de la manière suivante
     void playOneRound()
     {
-        // on peut comparer et supprimer les cartes des joueurs
-        // d'un jeu de cartes (game) de la manière suivante
+        // comparaison et suppression des cartes entre deux joueurs
         if (compareAndRemove(player1, player2))
         {
             compareAndRemove(player3, player4);
@@ -180,8 +177,7 @@ struct game
             return;
         }
 
-        // on peut mélanger les cartes des joueurs
-        // d'un jeu de cartes (game) de la manière suivante
+        // mélange des cartes des joueurs
         unsigned seed = (unsigned)std::chrono::system_clock::now()
                             .time_since_epoch()
                             .count();
@@ -192,11 +188,13 @@ struct game
     }
 
     // on peut comparer et supprimer les cartes de deux joueurs
-    // d'un jeu de cartes (game) de la manière suivante
+    // d'un jeu de cartes de la manière suivante
     bool compareAndRemove(std::vector<card> &p1, std::vector<card> &p2)
     {
+        // dernière cartes identiques
         if (p1.back().number == p2.back().number)
         {
+            // suppression des cartes
             p1.pop_back();
             p2.pop_back();
             return true;
@@ -204,24 +202,27 @@ struct game
         return false;
     }
 
-    // on peut modéliser un jeu de cartes (game)
-    // par ses cartes (deck) et ses joueurs (player1, player2, player3, player4)
-    // de la manière suivante
+private:
     std::array<card, 52> deck;
     std::vector<card> player1, player2, player3, player4;
 };
 
 // on peut mettre en oeuvre
-// un jeu de cartes (game) de la manière suivante
+// un jeu de cartes de la manière suivante
 int main(int argc, char **argv)
 {
+    // construction du jeu de cartes
     game newGame;
+
+    // construction des cartes
     newGame.buildDeck();
     newGame.dealCards();
     newGame.playGame();
 
+    // affichage du vainqueur
     auto winner = newGame.getWinner();
-    std::cout << "Player " << winner << " won the game." << std::endl;
+    std::cout << "(1): Player " << winner << " won the game." << std::endl;
+    // (1): Player N won the game.
 
     return 0;
 }

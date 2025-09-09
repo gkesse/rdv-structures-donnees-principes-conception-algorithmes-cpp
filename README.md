@@ -1,7 +1,7 @@
 # Introduction
 
-Ce dépôt est un récueil de recettes pratiques
-pour la mise en oeuvres de structures de données
+Ce dépôt est un recueil de recettes pratiques
+pour la mise en oeuvre de structures de données
 et comprendre les principes de conception d'algorithmes en C++.
 
 -   [Editeur VSCode](#editeur-vscode)
@@ -56,12 +56,12 @@ de la manière suivante.
     -   [Arbre binaire](c02/arbre-binaire)
     -   [Arbre de recherche binaire](c02/arbre-recherche-binaire)
     -   [Tas de recherche de mediane](c02/tas-recherche-mediane)
-    -   [Graphe de reseau de villes](c02/graphe-reseau-villes)
-    -   [Arbre-n-aire de systeme de fichiers](c02/arbre-n-aire-systeme-fichiers)
+    -   [Graphe de réseau de villes](c02/graphe-reseau-villes)
+    -   [Arbre-n-aire de système de fichiers](c02/arbre-n-aire-systeme-fichiers)
 
 # Contacts
 
 Vous pouvez entrer en contact avec moi de la manière suivante.
 
 -   [Me contacter sur le réseau social (LinkedIn)](https://www.linkedin.com/in/tia-gerard-kesse/)
--   [Voir le tutoriel sur mon site internet (ReadyDEV)](https://readydev.ovh/home)
+-   [Voir le tutoriel sur mon site internet (ReadyDEV)](https://readydev.ovh/home/tutoriels/cpp/structures-donnees-principes-conception-algorithmes)
