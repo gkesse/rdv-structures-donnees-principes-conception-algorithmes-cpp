@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10.0)
+project(rdvcpp VERSION 0.1.0 LANGUAGES C CXX)
+add_subdirectory(arbre-binaire)
+add_subdirectory(arbre-recherche-binaire)
+add_subdirectory(tas-recherche-mediane)
+add_subdirectory(graphe-reseau-villes)
+add_subdirectory(arbre-n-aire-systeme-fichiers)

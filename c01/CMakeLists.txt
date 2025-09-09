@@ -1,0 +1,12 @@
+
+cmake_minimum_required(VERSION 3.10.0)
+project(rdvcpp VERSION 0.1.0 LANGUAGES C CXX)
+add_subdirectory(tableau-dynamique)
+add_subdirectory(tableau-polyvalent)
+add_subdirectory(suppression-conditionnelle-liste-objets)
+add_subdirectory(iterateurs)
+add_subdirectory(liste-chainee)
+add_subdirectory(tableau-type-std-list)
+add_subdirectory(liste-doublement-chainee)
+add_subdirectory(jeu-de-cartes)
+add_subdirectory(file-attente)
