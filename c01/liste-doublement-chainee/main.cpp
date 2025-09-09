@@ -6,8 +6,10 @@
 #include <random>
 #include <chrono>
 
-// on peut modéliser un noeud
-// d'une liste doublement chaînée de la manière suivante
+// on peut modéliser un noeud d'une liste doublement chaînée
+// par sa donnée (data), son pointeur de noeud suivant (next)
+// et son pointeur de noeud précédent (prev)
+// de la manière suivante
 template <typename T>
 struct cir_list_node
 {
@@ -16,16 +18,13 @@ struct cir_list_node
         delete data;
     }
 
-    // on peut modéliser un noeud d'une liste doublement chaînée
-    // par sa donnée (data), son pointeur de noeud suivant (next)
-    // et son pointeur de noeud précédent (prev)
-    // de la manière suivante
     T *data;
     cir_list_node *next, *prev;
 };
 
-// on peut modéliser un itérateur
-// d'une liste doublement chaînée de la manière suivante
+// on peut modéliser un itérateur d'une liste doublement chaînée
+// par son pointeur de noeud (ptr)
+// de la manière suivante
 template <typename T>
 struct cir_list_it
 {
@@ -72,7 +71,7 @@ public:
         return it;
     }
 
-    // on peut pré-déccrémenter un itérateur
+    // on peut pré-décrémenter un itérateur
     // d'une liste doublement chaînée de la manière suivante
     cir_list_it &operator--()
     {
@@ -80,7 +79,7 @@ public:
         return *this;
     }
 
-    // on peut post-déccrémenter un itérateur
+    // on peut post-décrémenter un itérateur
     // d'une liste doublement chaînée de la manière suivante
     cir_list_it operator--(int)
     {
@@ -106,14 +105,12 @@ public:
     }
 
 private:
-    // on peut modéliser un itérateur d'une liste doublement chaînée
-    // par son pointeur de noeud (ptr)
-    // de la manière suivante
     node_ptr ptr;
 };
 
-// on peut modéliser
-// une liste doublement chaînée de la manière suivante
+// on peut modéliser une liste doublement chaînée
+// par son noeud de départ (head) et sa taille (n)
+// de la manière suivante
 template <typename T>
 class cir_list
 {
@@ -215,35 +212,35 @@ public:
         }
     }
 
-    // on peut implémenter l'itérateur de début
+    // on peut récupérer l'itérateur de début
     // d'une liste doublement chaînée de la manière suivante
     cir_list_it<T> begin()
     {
         return cir_list_it<T>{head};
     }
 
-    // on peut implémenter l'itérateur de début constant
+    // on peut récupérer l'itérateur constant de début
     // d'une liste doublement chaînée de la manière suivante
     cir_list_it<T> begin() const
     {
         return cir_list_it<T>{head};
     }
 
-    // on peut implémenter l'itérateur de fin
+    // on peut récupérer l'itérateur de fin
     // d'une liste doublement chaînée de la manière suivante
     cir_list_it<T> end()
     {
         return cir_list_it<T>{head->prev};
     }
 
-    // on peut implémenter l'itérateur de fin constant
+    // on peut récupérer l'itérateur constant de fin
     // d'une liste doublement chaînée de la manière suivante
     cir_list_it<T> end() const
     {
         return cir_list_it<T>{head->prev};
     }
 
-    // on peut afficher
+    // on peut afficher les éléments
     // une liste doublement chaînée de la manière suivante
     friend std::ostream &operator<<(std::ostream &_out, const cir_list<T> &_list)
     {
@@ -263,9 +260,6 @@ public:
     }
 
 private:
-    // on peut modéliser une liste doublement chaînée
-    // par son noeud de départ (head) et sa taille (n)
-    // de la manière suivante
     node_ptr head;
     size_t n;
 };
@@ -274,9 +268,10 @@ private:
 // une liste doublement châinée de la manière suivante
 int main(int argc, char **argv)
 {
-    // on peut insérer un élément
-    // dans une liste doublement châinée de la manière suivante
+    // construction par défaut d'une liste doublement châinée
     cir_list<int> pl;
+
+    // insertion des données au début d'une liste doublement châinée
     pl.insert(10);
     pl.insert(20);
     pl.insert(30);
@@ -285,26 +280,22 @@ int main(int argc, char **argv)
     std::cout << "(1): " << pl << std::endl;
     // (1): {50, 40, 30, 20, 10}
 
-    // on peut supprimer un élément
-    // d'une liste doublement châinée de la manière suivante
+    // suppression d'un élément d'une liste doublement châinée
     pl.erase(30);
     std::cout << "(2): " << pl << std::endl;
     // (2): {50, 40, 20, 10}
 
-    // on peut construire par liste
-    // une liste doublement châinée de la manière suivante
+    // construction par liste d'une liste doublement châinée
     cir_list<int> pl2 = {11, 21, 31, 41, 51};
     std::cout << "(3): " << pl2 << std::endl;
     // (3): {51, 41, 31, 21, 11}
 
-    // on peut construire par copie
-    // une liste doublement châinée de la manière suivante
+    // construction par copie d'une liste doublement châinée
     auto pl3 = pl2;
     std::cout << "(4): " << pl3 << std::endl;
     // (4): {51, 41, 31, 21, 11}
 
-    // on peut parcourir par itération
-    // une liste doublement châinée de la manière suivante
+    // parcours par itération d'une liste doublement châinée
     std::cout << "(5): {";
     for (cir_list<int>::iterator it = pl3.begin();
          it != pl3.end(); ++it)

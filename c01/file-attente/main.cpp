@@ -1,15 +1,15 @@
 #include <iostream>
 #include <queue>
 
-// on peut modéliser une tâche
+// on peut modéliser une tâche d'une imprimante
 // par son identifiant (id), l'auteur de la tâche (user),
-// la date de la demande (time) et un compteur (count)
+// la date de la demande (time) et un compteur de tâches (count)
 // de la manière suivante
 class Job
 {
 public:
-    // on peut construire une tâche de l'imprimante
-    // de la manière suivante
+    // on peut implémenter un constructeur par nom et date
+    // d'une tâche d'une imprimante de la manière suivante
     Job(const std::string &u, int t)
         : user(u),
           time(t),
@@ -17,7 +17,7 @@ public:
     {
     }
 
-    // on peut afficher une tâche de l'imprimante
+    // on peut afficher une tâche d'une imprimante
     // de la manière suivante
     friend std::ostream &operator<<(std::ostream &os, const Job &j)
     {
@@ -42,7 +42,7 @@ class Printer
 {
 public:
     // on peut ajouter une tâche à la fin
-    // de la liste des tâches de l'imprimante
+    // de la file d'attente des tâches de l'imprimante
     // de la manière suivante
     bool addNewJob(const Job &job)
     {
@@ -56,7 +56,7 @@ public:
     }
 
     // on peut supprimer une tâche au début
-    // de la liste des tâches de l'imprimante
+    // de la file d'attente des tâches de l'imprimante
     // de la manière suivante
     void startPrinting()
     {
@@ -75,12 +75,10 @@ private:
 // d'une imprimante de la manière suivante
 int main(int argc, char **argv)
 {
-    // on peut créer une imprimante avec une capacité
-    // de cinq tâches de la manière suivante
+    // construction d'une imprimante avec une capacité de cinq tâches
     Printer<5> printer;
 
-    // on peut créer les tâches
-    // de la manière suivante
+    // construction par nom et date des tâches
     Job j1("John", 10);
     Job j2("Jerry", 4);
     Job j3("Jimmy", 5);
@@ -88,28 +86,24 @@ int main(int argc, char **argv)
     Job j5("Bill", 8);
     Job j6("Kenny", 10);
 
-    // on peut ajouter les tâches
-    // de la manière suivante
+    // ajout des tâches à la file d'attente des tâches de l'imprimante
     printer.addNewJob(j1);
     printer.addNewJob(j2);
     printer.addNewJob(j3);
     printer.addNewJob(j4);
     printer.addNewJob(j5);
 
-    // on peut vérifier qu'on obtient un message d'erreur
-    // lorsqu'on essaye d'ajouter une tâche à l'imprimante
-    // au-delà de la capacité maximale de la manière suivante
+    // message d'erreur lors de l'ajout d'une tâche à l'imprimante
+    // au-delà de sa capacité maximale
     if (!printer.addNewJob(j6))
     {
         std::cout << "(2): Couldn't add 6th job" << std::endl;
     }
 
-    // on peut exécuter les tâches de l'imprimante
-    // de la manière suivante
+    // exécution des tâches de l'imprimante
     printer.startPrinting();
 
-    // on peut ajouter et exécuter la sixième tâche
-    // de l'imprimante de la manière suivante
+    // ajout et exécution de la sixième tâche de l'imprimante
     printer.addNewJob(j6);
     printer.startPrinting();
     return 0;

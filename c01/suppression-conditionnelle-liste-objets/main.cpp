@@ -41,8 +41,7 @@ std::ostream &operator<<(std::ostream &_out, const std::forward_list<T> &_list)
 // de la manière suivante
 int main(int argc, char **argv)
 {
-    // on peut créer une liste de citoyens
-    // de la manière suivante
+    // création de la liste de citoyens
     std::forward_list<citizen> citizens =
         {
             {"Raj", 22},
@@ -53,8 +52,7 @@ int main(int argc, char **argv)
     std::cout << "(1): " << citizens << std::endl;
     // (1): {{Raj, 22}, {Rohit, 25}, {Rohan, 17}, {Sachin, 16}}
 
-    // on peut supprimer tous les citoyens tels que (age < 18)
-    // de la manière suivante
+    // suppression de tous les citoyens tels que (age < 18)
     auto citizens_copy = citizens;
     citizens.remove_if(
         [](const citizen &c)
@@ -64,8 +62,7 @@ int main(int argc, char **argv)
     std::cout << "(2): " << citizens << std::endl;
     // (2): {{Raj, 22}, {Rohit, 25}}
 
-    // on peut supprimer tous les citoyens tels que (age != 17)
-    // de la manière suivante
+    // suppression de tous les citoyens tels que (age != 17)
     citizens_copy.remove_if(
         [](const citizen &c)
         {

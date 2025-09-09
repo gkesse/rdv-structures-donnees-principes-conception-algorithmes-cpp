@@ -103,7 +103,7 @@ public:
                             .count();
         std::shuffle(deck.begin(), deck.end(), std::default_random_engine(seed));
 
-        // distribution des cartes
+        // distribution des cartes aux joueurs
         player1 = {deck.begin() + 0 * 13, deck.begin() + 1 * 13};
         player2 = {deck.begin() + 1 * 13, deck.begin() + 2 * 13};
         player3 = {deck.begin() + 2 * 13, deck.begin() + 3 * 13};
@@ -120,7 +120,7 @@ public:
         }
     }
 
-    // on peut déterminer le vainqueur
+    // on peut déterminer le vainqueur d'une partie
     // d'un jeu de cartes de la manière suivante
     int getWinner() const
     {

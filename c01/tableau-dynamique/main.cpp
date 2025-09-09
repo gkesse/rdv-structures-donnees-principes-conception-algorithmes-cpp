@@ -3,6 +3,7 @@
 #include <algorithm>
 
 // on peut modéliser un tableau dynamique
+// par sa donnée (data) et sa taille (n)
 // de la manière suivante
 template <typename T>
 class dynamic_array
@@ -105,25 +106,24 @@ public:
 
     // on peut afficher un tableau dynamique
     // de la manière suivante
-    friend std::ostream &operator<<(std::ostream &_out, const dynamic_array &_arr)
+    friend std::ostream &operator<<(std::ostream &_out, const dynamic_array<T> &_arr)
     {
         _out << "{";
-        for (size_t i = 0; i < _arr.n; i++)
+        bool isSep = false;
+        for (const auto &item : _arr)
         {
-            if (i != 0)
+            if (isSep)
             {
                 _out << ", ";
             }
-            _out << _arr.data[i];
+            _out << item;
+            isSep = true;
         }
         _out << "}";
         return _out;
     }
 
 private:
-    // on peut modéliser un tableau dynamique
-    // par sa donnée (data) et sa taille (n)
-    // de la manière suivante
     T *data;
     size_t n;
 };
@@ -148,22 +148,19 @@ std::ostream &operator<<(std::ostream &os, const student &s)
 // de la manière suivante
 int main(int argc, char **argv)
 {
-    // on peut construire un tableau dynamique
-    // de la manière suivante
+    // construction d'un tableau dynamique
     dynamic_array<student> class1(2);
     class1[0] = {"Name1", 1};
     class1[1] = {"Name2", 2};
     std::cout << "(1): " << class1 << std::endl;
     //(1): {{Name1, 1}, {Name2, 2}}
 
-    // on peut construire par copie un tableau dynamique
-    // de la manière suivante
+    // construction par copie d'un tableau dynamique
     auto class2 = class1;
     std::cout << "(2): " << class2 << std::endl;
     //(2): {{Name1, 1}, {Name2, 2}}
 
-    // on peut fusionner deux tableaux dynamiques
-    // de la manière suivante
+    // fusion de deux tableaux dynamiques
     auto class3 = class1 + class2;
     std::cout << "(3): " << class3 << std::endl;
     //(3): {{Name1, 1}, {Name2, 2}, {Name1, 1}, {Name2, 2}}

@@ -5,18 +5,18 @@ pour la mise en oeuvre de structures de données
 et comprendre les principes de conception d'algorithmes en C++.
 
 -   [Editeur VSCode](#editeur-vscode)
--   [Extraits de code](#extraits-de-code)
+-   [Extraits de codes](#extraits-de-codes)
 -   [Contacts](#contacts)
 
 # Editeur VSCode
 
-Vous pouvez compiler et exécuter tous les extraits de code
+Vous pouvez compiler et exécuter tous les extraits de codes
 de ce dépôt sous VSCode de la manière suivante.
 
 -   Installer VSCode sous Windows.
 -   Installer MSVC ou MinGW sous Windows.
 -   Installer l'extension CMake sous VSCode.
--   Compiler et exécuter tous les extraits de code sous VSCode.
+-   Compiler et exécuter tous les extraits de codes sous VSCode.
 
 Vous pouvez sélectionner une cible CMake à exécuter
 parmi plusieurs sous VSCode de la manière suivante.
@@ -34,7 +34,7 @@ pour CMake sous VSCode de la manière suivante.
 -   Aller dans la rubrique Configure.
 -   Modifier le compilateur C++ à utiliser.
 
-# Extraits de code
+# Extraits de codes
 
 Vous pouvez accéder à un extrait de code
 de la manière suivante.
@@ -55,7 +55,7 @@ de la manière suivante.
 
     -   [Arbre binaire](c02/arbre-binaire)
     -   [Arbre de recherche binaire](c02/arbre-recherche-binaire)
-    -   [Tas de recherche de mediane](c02/tas-recherche-mediane)
+    -   [Tas de recherche de médiane](c02/tas-recherche-mediane)
     -   [Graphe de réseau de villes](c02/graphe-reseau-villes)
     -   [Arbre-n-aire de système de fichiers](c02/arbre-n-aire-systeme-fichiers)
 

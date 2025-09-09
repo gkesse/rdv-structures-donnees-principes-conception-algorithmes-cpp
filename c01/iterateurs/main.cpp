@@ -46,8 +46,7 @@ std::ostream &operator<<(
 // de la manière suivante
 int main(int argc, char **argv)
 {
-    // on peut initialiser une liste (vector)
-    // de la manière suivante
+    // création d'une liste (vector)
     std::vector<std::string> vec = {
         "Lewis Hamilton",
         "Lewis Hamilton",
@@ -61,55 +60,47 @@ int main(int argc, char **argv)
     };
     std::cout << "(1): " << vec << std::endl;
     // (1): {Lewis Hamilton, Lewis Hamilton, Nico Roseberg ,
-    // Sebastian Vettel, Lewis Hamilton, Sebastian Vettel,
-    // Sebastian Vettel, Sebastian Vettel, Fernando Alonso}
+    //       Sebastian Vettel, Lewis Hamilton, Sebastian Vettel,
+    //       Sebastian Vettel, Sebastian Vettel, Fernando Alonso}
 
-    // on peut récupérer le premier élément
-    // d'une liste (vector) de la manière suivante
+    // récupération du premier élément d'une liste (vector)
     auto it = vec.begin(); // Temps constant
     std::cout << "(2): " << *it << std::endl;
     // (2): Lewis Hamilton
 
-    // on peut auto-addionner un itérateur
-    // d'une liste (vector) de la manière suivante
+    // Auto-addion d'un itérateur d'une liste (vector)
     it += 8; // Temps constant
     std::cout << "(3): " << *it << std::endl;
     // (3): Fernando Alonso
 
-    // on peut faire avancer en arrière un itérateur
-    // d'une liste (vector) de la manière suivante
+    // déplacement en arrière d'un itérateur d'une liste (vector)
     advance(it, -3); // Temps constant
     std::cout << "(4): " << *it << std::endl;
     // (4): Sebastian Vettel
 
-    // on peut copier une liste (vector) vers une liste (forward_list)
-    // de la manière suivante
+    // copie d'une liste (vector) vers une liste (forward_list)
     std::forward_list<std::string> fwd(vec.begin(), vec.end());
     std::cout << "(5): " << fwd << std::endl;
     // (5): {Lewis Hamilton, Lewis Hamilton, Nico Roseberg ,
     // Sebastian Vettel, Lewis Hamilton, Sebastian Vettel,
     // Sebastian Vettel, Sebastian Vettel, Fernando Alonso}
 
-    // on peut récupérer le premier élément
-    // d'une liste (forward_list) de la manière suivante
+    // récupération du premier élément d'une liste (forward_list)
     auto it1 = fwd.begin();
     std::cout << "(6): " << *it << std::endl;
     // (6): Sebastian Vettel
 
-    // on peut faire avancer en avant un itérateur
-    // d'une liste (forward_list) de la manière suivante
+    // déplacement en avant d'un itérateur d'une liste (forward_list)
     advance(it1, 5); // Temps proportionnel au nombre d'éléments
     std::cout << "(7): " << *it << std::endl;
     // (7): Sebastian Vettel
 
-    // on peut vérifier qu'on obtient une erreur à l'exécution
-    // lorsqu'on fait avancer en arrière un itérateur
-    // d'une liste (forward_list) de la manière suivante
+    // erreur à l'exécution
+    // lors du déplacement en arrière d'un itérateur d'une liste (forward_list)
     // advance(it1, -2); // Runtime error
 
-    // on peut vérifier qu'on obtient une erreur à la compilation
-    // lorsqu'on fait auto-additionner un itérateur
-    // d'une liste (forward_list) de la manière suivante
+    // erreur à la compilation
+    // lors de l'auto-addition d'un itérateur d'une liste (forward_list)
     // it1 += 2; // Compiler error
 
     return 0;
